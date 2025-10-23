@@ -3,21 +3,32 @@ import os
 
 directory = 'excel_years'
 
-filenames = os.listdir(directory)
+import pandas as pd
+import os
 
-filepaths = [os.path.join(directory, f) for f in os.listdir(directory)]
-#goes to each of the file names for each of them we generate a list of paths
-#construct a list of all of the strings
-# Generate filepaths for files which include '2024' and '2025' in their names
-filepaths_2024 = [fp for fp in filepaths if '2024' in os.path.basename(fp)]
-filepaths_2025 = [fp for fp in filepaths if '2025' in os.path.basename(fp)]
+# Directory where the Excel files are located
+directory = 'excel_files'
 
+# Get filenames of Excel files for 2025 and 2024
+filenames_2025 = [f for f in os.listdir(directory) if '2025' in f]
+filenames_2024 = [f for f in os.listdir(directory) if '2024' in f]
+
+# File paths for each year
+filepaths_2025 = [os.path.join(directory, filename) for filename in filenames_2025]
+filepaths_2024 = [os.path.join(directory, filename) for filename in filenames_2024]
+
+# Read and merge DataFrames for 2024
 dataframes_2024 = [pd.read_excel(filepath) for filepath in filepaths_2024]
-dataframes_2025 = [pd.read_excel(filepath) for filepath in filepaths_2025]
-
 merged_df_2024 = pd.concat(dataframes_2024, ignore_index=True)
-merged_df_2025 = pd.concat(dataframes_2025, ignore_index=True)
+output_file_path_2024 = os.path.join(directory, '2024.xlsx')
+merged_df_2024.to_excel(output_file_path_2024, index=False)
 
-#export the merged data frames into a new excel file
-merged_df_2024.to_excel('excel_years/merged_excel_2024.xlsx', index=False)
-merged_df_2025.to_excel('excel_years/merged_excel_2025.xlsx', index=False)
+# Read and merge DataFrames for 2025
+dataframes_2025 = [pd.read_excel(filepath) for filepath in filepaths_2025]
+merged_df_2025 = pd.concat(dataframes_2025, ignore_index=True)
+output_file_path_2025 = os.path.join(directory, '2025.xlsx')
+merged_df_2025.to_excel(output_file_path_2025, index=False)
+
+# Confirmation messages
+print("Merged data for 2024 saved to '2024.xlsx'.")
+print("Merged data for 2025 saved to '2025.xlsx'.")

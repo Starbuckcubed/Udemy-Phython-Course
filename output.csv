@@ -1,0 +1,10 @@
+Order Date,Product,Category,Price,Quantity,total
+2023-01-01,Product A,Electronics,500,2,1000
+2023-01-03,Product B,Clothing,40,3,120
+2023-01-05,Product C,Electronics,1200,1,1200
+2023-02-10,Product A,Electronics,500,1,500
+2023-02-15,Product B,Clothing,40,2,80
+2023-02-20,Product C,Electronics,1200,3,3600
+2023-03-05,Product A,Electronics,500,2,1000
+2023-03-08,Product B,Clothing,40,1,40
+2023-03-12,Product C,Electronics,1200,2,2400

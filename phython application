@@ -1,0 +1,23 @@
+import os
+from datetime import datetime
+
+directory ='files' # Directory to store files
+
+filenames= os.listdir(directory)
+
+for filename in filenames:
+    filepath = os.path.join(directory, filename)
+    
+        
+    with open(filepath, 'r') as file:
+            content = file.read() 
+             
+    
+    day = datetime.now().strftime("%Y-%m-%d")
+
+    new_filename = f'{filename[:-23]}_{day}.txt'
+
+    new_filepath = os.path.join(directory, new_filename)
+
+    os.rename(filepath, new_filepath)
+    print(f'File renamed to: {new_filename}')   

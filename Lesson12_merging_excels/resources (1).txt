@@ -1,0 +1,7 @@
+- Install the libaries with:
+pip install pandas openpyxl
+
+directory = 'excel_files'
+filenames = os.listdir()
+#list comprehension instead of a for loop
+filepaths = [os.path.join(directory, filename) for filename in filenames]
