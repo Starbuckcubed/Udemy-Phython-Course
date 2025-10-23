@@ -1,6 +1,5 @@
 
-#adding a change so I can commit something to a new branch
-
+#adding a 3rd change so I can create a merge conflict
 numbers = input("Enter a series of numbers separated by spaces for analysis")
 
 number_list = [int(num) for num in numbers.split()]
